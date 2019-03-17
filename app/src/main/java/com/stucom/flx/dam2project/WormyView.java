@@ -1,6 +1,7 @@
 package com.stucom.flx.dam2project;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -14,12 +15,12 @@ public class WormyView extends View {
     public static final int SLOW_DOWN = 5;
     public static int TILE_SIZE = 48;
     private int nCols, nRows, top, left, bottom, right;
-    private int wormX, wormY, score = 0, numCoins = 0, slowdown;
+    private int wormX, wormY, score = 0, numCoins = 0, slowdown,lifeCounter;
     private boolean playing = false;
     private char map[];
     private Paint paint;
     private Bitmap tiles, wormLeft, wormRight, worm;
-
+    private Bitmap life [] = new Bitmap[2];
     public WormyView(Context context) { this(context, null, 0); }
     public WormyView(Context context, AttributeSet attrs) { this(context, attrs, 0); }
     public WormyView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -28,6 +29,19 @@ public class WormyView extends View {
         paint.setStyle(Paint.Style.STROKE);
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(3.0f);
+
+
+        life [0] = BitmapFactory.decodeResource(getResources(),R.drawable.heart);
+        life [1] = BitmapFactory.decodeResource(getResources(),R.drawable.heart2);
+
+        tiles = BitmapFactory.decodeResource(getResources(), R.drawable.tiles);
+        wormLeft = BitmapFactory.decodeResource(getResources(), R.drawable.worm_left);
+        wormRight = BitmapFactory.decodeResource(getResources(), R.drawable.worm_right);
+        worm = wormLeft;
+
+        lifeCounter = 3;
+
+
         tiles = BitmapFactory.decodeResource(getResources(), R.drawable.tiles);
         wormLeft = BitmapFactory.decodeResource(getResources(), R.drawable.worm_left);
         wormRight = BitmapFactory.decodeResource(getResources(), R.drawable.worm_right);
@@ -196,8 +210,16 @@ public class WormyView extends View {
                 }
                 else if ((map[idx] >= 'P') && (map[idx] <= 'S')) {
                     // Plant touched!
-                    playing = false;
-                    if (listener != null) listener.gameLost(this);
+                    lifeCounter--;
+                    if(lifeCounter == 0) {
+                        //Go to gameOverIntent when lose
+                        Intent gameOverIntent = new Intent(getContext(), GameOverActivity.class);
+                        gameOverIntent.putExtra("score", score);
+                        getContext().startActivity(gameOverIntent);
+
+                        playing = false;
+                        if (listener != null) listener.gameLost(this);
+                    }
                 }
             }
         }
