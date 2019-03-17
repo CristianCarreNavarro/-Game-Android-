@@ -30,7 +30,7 @@
     <activity android:name=".SettingsActivity"/>
     <activity android:name=".AboutActivity"/>
     <activity android:name=".WormyActivity"/>
-
+    <activity android:name=".GameOverActivity"/>
     <provider
       android:authorities="com.stucom.flx.fileProvider"
       android:exported="false"
