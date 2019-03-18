@@ -38,14 +38,7 @@ public class WormyView extends View {
         wormLeft = BitmapFactory.decodeResource(getResources(), R.drawable.worm_left);
         wormRight = BitmapFactory.decodeResource(getResources(), R.drawable.worm_right);
         worm = wormLeft;
-
         lifeCounter = 3;
-
-
-        tiles = BitmapFactory.decodeResource(getResources(), R.drawable.tiles);
-        wormLeft = BitmapFactory.decodeResource(getResources(), R.drawable.worm_left);
-        wormRight = BitmapFactory.decodeResource(getResources(), R.drawable.worm_right);
-        worm = wormLeft;
     }
 
     @Override public void onMeasure(int specW, int specH) {
@@ -149,6 +142,17 @@ public class WormyView extends View {
         dst.right = dst.left + TILE_SIZE;
         dst.bottom = dst.top + TILE_SIZE;
         canvas.drawBitmap(worm, src, dst, paint);
+
+        for (int i=0; i<3; i++) {
+            int e = (int) (75 + life[0].getWidth() * 1.5 * i);
+            int f = 60;
+            if (i < lifeCounter) {
+                canvas.drawBitmap(life[0], e, f, null);
+
+            } else {
+                canvas.drawBitmap(life[1], e, f, null);
+            }
+        }
     }
 
     @Override public void onDraw(Canvas canvas) {
@@ -180,6 +184,11 @@ public class WormyView extends View {
         }
         drawWorm(canvas, left + wormX * TILE_SIZE, top + wormY * TILE_SIZE);
         canvas.drawRect(left, top, right, bottom, paint);
+        int e = 75;
+        int f = 80;
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(60);
+        canvas.drawText("Score: " + score, e,f,paint);
     }
 
     private int counter = 0;

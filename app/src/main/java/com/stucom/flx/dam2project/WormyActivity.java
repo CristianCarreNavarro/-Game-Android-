@@ -20,30 +20,46 @@ import android.widget.Toast;
         private TextView tvScore;
         // Sensors' related code
         private SensorManager sensorManager;
-
+        private Button btnNewGame;
+        boolean isActive = false;
 
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_wormy);
+            setContentView(R.layout.activity_play);
             wormyView = findViewById(R.id.wormyView);
-            Button btnNewGame = findViewById(R.id.btnNewGame);
-            tvScore = findViewById(R.id.tvScore);
+
+            btnNewGame = findViewById(R.id.btnNewGame);
             btnNewGame.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    tvScore.setText("0");
+                public void onClick(View view) {
+
                     wormyView.newGame();
+                    btnNewGame.setVisibility(View.INVISIBLE);
+
+                    if (isActive == false) {
+                        isActive = true;
+
+                    } else {
+
+
+                    }
+
                 }
+
             });
             wormyView.setWormyListener(this);
             sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         }
 
+
+
+
         @Override
         public void onResume() {
             super.onResume();
+            btnNewGame.setVisibility(View.VISIBLE);
             // Connect the sensor's listener to the view
             Sensor sensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
             if (sensor != null) {
@@ -62,14 +78,18 @@ import android.widget.Toast;
             return super.dispatchKeyEvent(event);
         }
 
+
+
         @Override
         public void scoreUpdated(View view, int score) {
-            tvScore.setText(String.valueOf(score));
+
+
         }
 
         @Override
         public void gameLost(View view) {
             Toast.makeText(this, getString(R.string.you_lost), Toast.LENGTH_LONG).show();
+
         }
 
 
