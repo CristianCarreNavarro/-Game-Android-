@@ -1,6 +1,7 @@
 package com.stucom.flx.dam2project;
 
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -24,7 +25,7 @@ public class WormyActivity extends AppCompatActivity
         private SensorManager sensorManager;
         private Button btnNewGame;
         boolean isActive = false;
-        public AudioService audio = new AudioService();
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +34,15 @@ public class WormyActivity extends AppCompatActivity
             wormyView = findViewById(R.id.wormyView);
 
             btnNewGame = findViewById(R.id.btnNewGame);
+
+
             btnNewGame.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                 audio.startLoop();
+                    Intent intent1 =new Intent(WormyActivity.this, AudioService.class).putExtra("action",3);
+                    startService(intent1);
                     wormyView.newGame();
                     btnNewGame.setVisibility(View.INVISIBLE);
-
                     if (isActive == false) {
                         isActive = true;
 

@@ -13,6 +13,7 @@ import static android.app.Service.START_STICKY;
 
 public class AudioService extends Service{
 
+
     static final int DECREASE = 1, INCREASE = 2, START = 3, PAUSE = 4;
     Boolean shouldPause = false;
     //Music
@@ -59,11 +60,14 @@ public class AudioService extends Service{
         Log.i(getClass().getSimpleName(), "Creating service");
     }
 
-//startService(intent)
+    //startService(intent)
+
+
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+        startLoop();
         Log.i(getClass().getSimpleName(), "Intent received");
 
         try {
