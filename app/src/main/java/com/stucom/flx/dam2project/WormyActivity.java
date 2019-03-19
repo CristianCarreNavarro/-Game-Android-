@@ -13,7 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-    public class WormyActivity extends AppCompatActivity
+import com.stucom.flx.dam2project.model.AudioService;
+
+public class WormyActivity extends AppCompatActivity
             implements WormyView.WormyListener, SensorEventListener {
 
         private WormyView wormyView;
@@ -22,7 +24,7 @@ import android.widget.Toast;
         private SensorManager sensorManager;
         private Button btnNewGame;
         boolean isActive = false;
-
+        public AudioService audio = new AudioService();
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ import android.widget.Toast;
             btnNewGame.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                 audio.startLoop();
                     wormyView.newGame();
                     btnNewGame.setVisibility(View.INVISIBLE);
 

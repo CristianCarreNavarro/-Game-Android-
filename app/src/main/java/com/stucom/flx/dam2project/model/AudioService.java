@@ -3,6 +3,7 @@ package com.stucom.flx.dam2project.model;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -14,24 +15,26 @@ public class AudioService extends Service{
 
     static final int DECREASE = 1, INCREASE = 2, START = 3, PAUSE = 4;
     Boolean shouldPause = false;
-    MediaPlayer loop;
+    //Music
+    MediaPlayer mediaPlayer;
+    //Sound
+    private SoundPool soundPool;
 
-
-    private void startLoop(){
-        if(loop == null){
-            loop = MediaPlayer.create(this, R.raw.tick);
+    public void startLoop(){
+        if(mediaPlayer == null){
+            mediaPlayer = MediaPlayer.create(this, R.raw.worms2);
         }
-        if(!loop.isPlaying()){
-            loop.setLooping(true);
-            loop.start();
+        if(!mediaPlayer.isPlaying()){
+            mediaPlayer.setLooping(true);
+            mediaPlayer.start();
         }
     }
 
     private void decrease(){
-        loop.setVolume(0.2f, 0.2f);
+        mediaPlayer.setVolume(0.2f, 0.2f);
     }
     private void increase(){
-        loop.setVolume(1.0f, 1.0f);
+        mediaPlayer.setVolume(1.0f, 1.0f);
     }
     private void start(){
         startLoop();
@@ -44,7 +47,7 @@ public class AudioService extends Service{
                 new Runnable() {
                     public void run() {
                         if(shouldPause) {
-                            loop.pause();
+                            mediaPlayer.pause();
                         }
                     }
                 }, 100);
@@ -97,7 +100,7 @@ public class AudioService extends Service{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (loop != null) loop.release();
+        if (mediaPlayer != null) mediaPlayer.release();
     }
 
     @Override
