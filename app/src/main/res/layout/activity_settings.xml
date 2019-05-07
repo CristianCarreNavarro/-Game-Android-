@@ -7,78 +7,120 @@
     android:background="@drawable/mountain_snow"
     tools:context=".SettingsActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/settings"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+  <ImageView
+      android:id="@+id/btnFoto"
+      android:layout_width="54dp"
+      android:layout_height="55dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.184"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.989"
+      app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+  <ImageView
+      android:id="@+id/imageViewFoto"
+      android:layout_width="211dp"
+      android:layout_height="229dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.195"
+      tools:srcCompat="@tools:sample/avatars" />
+
+  <LinearLayout
+      android:id="@+id/linearLayout3"
+      android:layout_width="218dp"
+      android:layout_height="166dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:orientation="vertical"
+      app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.497"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.262"></LinearLayout>
+
+  <ImageView
+      android:id="@+id/btnCam"
+      android:layout_width="68dp"
+      android:layout_height="55dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+
+      app:layout_constraintHorizontal_bias="0.837"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.988"
+      app:srcCompat="@android:drawable/ic_menu_camera" />
+
+  <TextView
+      android:id="@+id/inputMail"
+      android:layout_width="305dp"
+      android:layout_height="50dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginEnd="8dp"
+      android:text="TextView"
+      android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+      android:textSize="24sp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.566"
+
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.744"
+      tools:text="Email" />
 
   <EditText
-    android:id="@+id/edName"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="232dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:ems="10"
-    android:hint="@string/hint_name"
-    android:inputType="textPersonName"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imAvatar"/>
+      android:id="@+id/inputUsername"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:ems="15"
+      android:inputType="textPersonName"
+      android:text="Nickname"
+      android:textColor="@color/colorAccent"
+      android:textColorHighlight="@color/colorAccent"
+      android:textColorHint="@color/colorAccent"
+      app:layout_constraintBottom_toTopOf="@+id/inputMail"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.493"
+      app:layout_constraintStart_toStartOf="parent"
+ />
 
-    <ImageView
-        android:id="@+id/imAvatar"
-        android:layout_width="192dp"
-        android:layout_height="192dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:adjustViewBounds="false"
-        android:background="@drawable/border_avatar"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/unknown" />
+  <Button
+      android:id="@+id/btnSave"
+      android:layout_width="117dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="8dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginBottom="8dp"
+      android:text="Save"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
 
-    <ImageButton
-        android:id="@+id/btnCamera"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border_avatar"
-        app:layout_constraintStart_toEndOf="@+id/imAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/btnGallery"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
-
-    <ImageButton
-        android:id="@+id/btnGallery"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/border_avatar"
-        app:layout_constraintStart_toEndOf="@+id/imAvatar"
-        app:layout_constraintTop_toTopOf="@+id/imAvatar"
-        app:srcCompat="@android:drawable/ic_menu_gallery" />
-
-    <ImageButton
-        android:id="@+id/btnDelete"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border_avatar"
-        app:layout_constraintStart_toEndOf="@+id/imAvatar"
-        app:layout_constraintTop_toBottomOf="@+id/btnCamera"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+      app:layout_constraintVertical_bias="0.252" />
 
 </android.support.constraint.ConstraintLayout>

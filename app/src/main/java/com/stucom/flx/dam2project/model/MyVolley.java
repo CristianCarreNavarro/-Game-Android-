@@ -7,9 +7,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
 public class MyVolley {
-
-
-
     // La única instància
     private static MyVolley instance;
 
@@ -34,4 +31,3 @@ public class MyVolley {
         queue.add(request);
     }
 }
-

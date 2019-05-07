@@ -1,8 +1,10 @@
 package com.stucom.flx.dam2project.model;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Player {
+public class Player implements Comparable<Player>{
 
     @SerializedName("Id")
     private int id;
@@ -13,17 +15,17 @@ public class Player {
   @SerializedName("data")
   private String data;
   @SerializedName("totalScore")
-  private String totalScore;
+  private int totalScore;
   @SerializedName("lastLevel")
   private String lastLevel;
   @SerializedName("lastScore")
-  private String lastScore;
+  private int lastScore;
   @SerializedName("score")
   private String score;
 
   public Player(){
   }
-    public Player(int id, String name, String image, String data, String totalScore,String lastLevel,String lastScore,String score ) {
+    public Player(int id, String name, String image, String data, int totalScore,String lastLevel,int lastScore,String score ) {
       this.id = id;
       this.name = name;
       this.image = image;
@@ -58,11 +60,11 @@ public class Player {
     this.data = data;
   }
 
-  public String getTotalScore() {
+  public int getTotalScore() {
     return totalScore;
   }
 
-  public void setTotalScore(String totalScore) {
+  public void setTotalScore(int totalScore) {
     this.totalScore = totalScore;
   }
 
@@ -74,11 +76,11 @@ public class Player {
     this.lastLevel = lastLevel;
   }
 
-  public String getLastScore() {
+  public int getLastScore() {
     return lastScore;
   }
 
-  public void setLastScore(String lastScore) {
+  public void setLastScore(int lastScore) {
     this.lastScore = lastScore;
   }
 
@@ -91,6 +93,19 @@ public class Player {
   }
 
 
+  public int getId() {
+    return id;
+  }
+  @Override
+  public int compareTo(@NonNull Player o) {
+    if(getTotalScore() == o.getTotalScore()){
+      return 0;
+    } else if (getTotalScore() < o.getTotalScore()) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
 }
 
 
